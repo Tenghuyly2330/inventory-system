@@ -86,7 +86,7 @@ const Login = () => {
 
                                     <div>
                                           <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                                                ពាក្យសម្ងាត់ testing
+                                                ពាក្យសម្ងាត់
                                           </label>
                                           <div className="relative rounded-lg shadow-sm">
                                                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
