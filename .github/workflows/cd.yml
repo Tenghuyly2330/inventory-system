@@ -1,0 +1,53 @@
+name: CD Pipeline
+
+on: 
+      push: 
+            branches: 
+                  - main
+
+jobs:
+      # deploy frontend
+      deploy-frontend: 
+            name: Deploy Frontend
+            runs-on: ubuntu-latest
+
+            defaults:
+                  run: 
+                        working-directory: ./frontend
+
+            steps: 
+                  - name: Checkout code
+                    uses: actions/checkout@v4
+                    
+                  - name: Setup nodejs
+                    uses: actions/setup-node@v4
+                    with: 
+                        node-version: "24"
+                        cache: "npm"
+                        cache-dependency-path: "./frontend/package-lock.json"
+                        
+                  - name: Install dependency
+                    run: npm ci
+
+                  - name: Build
+                    run: npm run build
+
+                  - name: Deploy to Vercel
+                    run: |
+                        rm -rd .vercel
+                        npx vercel@latest --prod --token=${{ secrets.VERCEL_TOKEN }}
+                    env:
+                        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+                        VERCEL_PROJECT_ID: ${{ secrets.VERCEL_FRONTEND_PROJECT_ID }}
+      
+      deploy-backend:
+            name: Deploy backend to Render
+            runs-on: ubuntu-latest
+
+            steps:
+                  - name: Trigger Render deploy hook
+                    run: |
+                        curl --fail --silent --show-error \
+                        "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" \
+                        -o /dev/null \
+                        -w "HTTP status: %{http_code}\n"
