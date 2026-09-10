@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum StockMovementType {
+  IN
+  OUT
+  ADJUSTMENT
+}
+
+model User {
+  id             Int             @id @default(autoincrement())
+  name           String
+  email          String          @unique
+  password       String
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  stockMovements StockMovement[]
+
+  @@map("users")
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id             Int             @id @default(autoincrement())
+  categoryId     Int
+  name           String
+  sku            String          @unique
+  description    String?
+  price          Float
+  imageUrl       String?
+  quantity       Int             @default(0)
+  minimumStock   Int             @default(0)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  category       Category        @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  stockMovements StockMovement[]
+
+  @@map("products")
+}
+
+model Supplier {
+  id             Int             @id @default(autoincrement())
+  name           String
+  phone          String?
+  email          String?
+  address        String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  stockMovements StockMovement[]
+
+  @@map("suppliers")
+}
+
+model StockMovement {
+  id         Int               @id @default(autoincrement())
+  productId  Int
+  supplierId Int?
+  type       StockMovementType
+  quantity   Int
+  note       String?
+  createdBy  Int
+  createdAt  DateTime          @default(now())
+  product    Product           @relation(fields: [productId], references: [id], onDelete: Cascade)
+  supplier   Supplier?         @relation(fields: [supplierId], references: [id], onDelete: SetNull)
+  user       User              @relation(fields: [createdBy], references: [id], onDelete: Cascade)
+
+  @@map("stock_movements")
+}
