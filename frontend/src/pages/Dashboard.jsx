@@ -200,7 +200,7 @@ const Dashboard = () => {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2 text-rose-400">
               <AlertTriangle className="w-5 h-5" />
-              <h3 className="text-lg font-bold text-slate-100">ការព្រមានស្តុកទាប</h3>
+              <h3 className="text-lg font-bold text-slate-100">ស្តុកទាប</h3>
             </div>
             <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-500/20 text-rose-600 dark:text-rose-300 border border-rose-500/30">
               {lowStockList.length} មុខទំនិញ

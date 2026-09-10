@@ -70,15 +70,15 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                               </div>
 
                               <div className="p-4 border-t border-slate-800">
-                                    <div className="flex items-center justify-between mb-3 px-2">
+                                    {/* <div className="flex items-center justify-between mb-3 px-2">
                                           <div className="truncate">
                                                 <p className="text-sm font-semibold text-slate-200 truncate">{user?.name || "អ្នកប្រើប្រាស់"}</p>
                                                 <p className="text-xs text-slate-400 truncate">{user?.email || "admin@example.com"}</p>
                                           </div>
-                                    </div>
+                                    </div> */}
                                     <button
                                           onClick={logout}
-                                          className="w-full flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-rose-400 hover:text-black hover:bg-rose-500/10 rounded-lg transition-colors cursor-pointer border border-rose-500/20"
+                                          className="w-full flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-rose-400 hover:text-black dark:hover:text-white hover:bg-rose-500/10 rounded-lg transition-colors cursor-pointer border border-rose-500/20"
                                     >
                                           <LogOut className="w-4 h-4" />
                                           <span>ចាកចេញ</span>

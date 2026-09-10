@@ -38,7 +38,6 @@ const Login = () => {
 
       return (
             <div className="min-h-screen bg-slate-950 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden">
-                  {/* Dynamic Background Glows */}
                   <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-600/15 blur-[120px] rounded-full pointer-events-none" />
                   <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-600/10 blur-[100px] rounded-full pointer-events-none" />
 
@@ -49,11 +48,11 @@ const Login = () => {
                               </div>
                         </div>
                         <h2 className="mt-4 text-center text-3xl font-extrabold text-slate-100 tracking-tight">
-                              Inventory System
+                              ប្រព័ន្ធគ្រប់គ្រងស្តុក
                         </h2>
-                        <p className="mt-2 text-center text-sm text-slate-400">
+                        {/* <p className="mt-2 text-center text-sm text-slate-400">
                               Sign in to your admin workspace
-                        </p>
+                        </p> */}
                   </div>
 
                   <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md relative z-10">
@@ -68,7 +67,7 @@ const Login = () => {
                               <form className="space-y-6" onSubmit={handleSubmit}>
                                     <div>
                                           <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                                                Email Address
+                                                អ៊ីមែល
                                           </label>
                                           <div className="relative rounded-lg shadow-sm">
                                                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
@@ -87,7 +86,7 @@ const Login = () => {
 
                                     <div>
                                           <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                                                Password
+                                                ពាក្យសម្ងាត់
                                           </label>
                                           <div className="relative rounded-lg shadow-sm">
                                                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
@@ -120,10 +119,10 @@ const Login = () => {
                                                 {isSubmitting ? (
                                                       <>
                                                             <Loader2 className="w-4 h-4 animate-spin" />
-                                                            <span>Signing in...</span>
+                                                            <span>កំពុងចូល...</span>
                                                       </>
                                                 ) : (
-                                                      <span>Login</span>
+                                                      <span>ចូល</span>
                                                 )}
                                           </button>
                                     </div>
@@ -131,7 +130,7 @@ const Login = () => {
 
                               <div className="mt-6 pt-4 border-t border-slate-800 text-center">
                                     <p className="text-xs text-slate-500">
-                                          Demo Credentials: <span className="text-indigo-400 font-mono">admin@example.com</span> / <span className="text-indigo-400 font-mono">admin123</span>
+                                          សាកល្បង: <span className="text-indigo-400 font-mono">admin@example.com</span> / <span className="text-indigo-400 font-mono">admin123</span>
                                     </p>
                               </div>
                         </div>
