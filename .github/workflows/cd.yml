@@ -11,10 +11,6 @@ jobs:
             name: Deploy Frontend
             runs-on: ubuntu-latest
 
-            defaults:
-                  run: 
-                        working-directory: ./frontend
-
             steps: 
                   - name: Checkout code
                     uses: actions/checkout@v4
@@ -26,9 +22,11 @@ jobs:
                         cache: "npm"
                         
                   - name: Install dependency
+                    working-directory: ./frontend
                     run: npm ci
 
                   - name: Build
+                    working-directory: ./frontend
                     run: npm run build
 
                   - name: Deploy to Vercel
