@@ -1,4 +1,4 @@
-FROM node:22-bookworm-slim
+FROM node:24-bookworm-slim
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 
-RUN npm prisma generate
+RUN npx prisma generate
 
 ENV NODE_ENV=production
 
